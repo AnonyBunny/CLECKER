@@ -1,14 +1,20 @@
 extends Node2D
 
-var points = 0
-
+export var points = 0
+var areastate = false
 
 func _process(_delta):
+	if not areastate:
+		return
 	if Input.is_action_just_pressed("click"):  
 		points += 1
 		print(points)
 
-#this is bad dumb code, it doesn't account for if the button is actually being clicked
-#todo: check area
-#also todo: get an actual counter system visible instead of using debugger
-#probably need a new scene for that
+#todo add a store, add a point counter
+#this was way easier than I expected tbh
+
+func _on_Area2D_mouse_entered():
+	areastate = true
+
+func _on_Area2D_mouse_exited():
+	areastate = false
