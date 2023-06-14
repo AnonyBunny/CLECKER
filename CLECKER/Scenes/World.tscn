@@ -7,3 +7,9 @@ position = Vector2( -1, -1 )
 
 [node name="Clicker Button" parent="." instance=ExtResource( 1 )]
 position = Vector2( 512, 274 )
+
+[node name="Label" type="Label" parent="Clicker Button"]
+margin_left = -37.0
+margin_top = -270.0
+margin_right = 15.0
+margin_bottom = -256.0
