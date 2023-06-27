@@ -1,15 +1,39 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Clicker Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/CPSLogic.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Shoplogic.gd" type="Script" id=3]
 
 [node name="World" type="Node2D"]
-position = Vector2( -1, -1 )
+position = Vector2( -2, -1 )
 
 [node name="Clicker Button" parent="." instance=ExtResource( 1 )]
-position = Vector2( 512, 274 )
+position = Vector2( 127, 294 )
+scale = Vector2( 0.248445, 0.376242 )
 
 [node name="Label" type="Label" parent="Clicker Button"]
-margin_left = -37.0
-margin_top = -270.0
-margin_right = 15.0
-margin_bottom = -256.0
+margin_left = -88.5506
+margin_top = -385.39
+margin_right = -36.5506
+margin_bottom = -371.39
+rect_scale = Vector2( 4.2499, 7.9439 )
+text = "empty"
+align = 1
+
+[node name="CPSLogic" type="Node" parent="Clicker Button"]
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="Clicker Button/CPSLogic"]
+
+[node name="Button" type="Button" parent="Clicker Button/CPSLogic"]
+margin_left = 744.0
+margin_top = 148.0
+margin_right = 894.0
+margin_bottom = 448.0
+text = "Purchase Grandpa"
+
+[node name="Shoplogic" type="Node" parent="Clicker Button/CPSLogic"]
+script = ExtResource( 3 )
+
+[connection signal="timeout" from="Clicker Button/CPSLogic/Timer" to="Clicker Button/CPSLogic" method="_on_Timer_timeout"]
+[connection signal="button_down" from="Clicker Button/CPSLogic/Button" to="Clicker Button/CPSLogic/Shoplogic" method="_on_grandpabuy_down"]
