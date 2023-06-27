@@ -1,2 +1,2 @@
 # CLECKER
-It's a clicker game made by dumb no good coder
+It's a clicker game made by smart good coder (and walter white)
