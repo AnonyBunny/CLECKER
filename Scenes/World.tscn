@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Clicker Button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/CPSLogic.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Shoplogic.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/BuyButton.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node2D"]
 position = Vector2( -2, -1 )
@@ -12,9 +13,9 @@ position = Vector2( 127, 294 )
 scale = Vector2( 0.248445, 0.376242 )
 
 [node name="Label" type="Label" parent="Clicker Button"]
-margin_left = -88.5506
+margin_left = -346.153
 margin_top = -385.39
-margin_right = -36.5506
+margin_right = -294.153
 margin_bottom = -371.39
 rect_scale = Vector2( 4.2499, 7.9439 )
 text = "empty"
@@ -25,15 +26,30 @@ script = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="Clicker Button/CPSLogic"]
 
-[node name="Button" type="Button" parent="Clicker Button/CPSLogic"]
-margin_left = 744.0
-margin_top = 148.0
-margin_right = 894.0
-margin_bottom = 448.0
-text = "Purchase Grandpa"
-
 [node name="Shoplogic" type="Node" parent="Clicker Button/CPSLogic"]
 script = ExtResource( 3 )
+button = ExtResource( 4 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Clicker Button/CPSLogic"]
+margin_left = 735.0
+margin_top = 23.0
+margin_right = 963.0
+margin_bottom = 573.0
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Clicker Button/CPSLogic/ScrollContainer"]
+margin_right = 200.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 200, 50 )
+
+[node name="Label2" type="Label" parent="Clicker Button"]
+margin_left = 92.5758
+margin_top = -374.759
+margin_right = 148.576
+margin_bottom = -360.759
+rect_scale = Vector2( 5.09842, 6.44485 )
+text = "cps: 0"
+align = 1
 
 [connection signal="timeout" from="Clicker Button/CPSLogic/Timer" to="Clicker Button/CPSLogic" method="_on_Timer_timeout"]
-[connection signal="button_down" from="Clicker Button/CPSLogic/Button" to="Clicker Button/CPSLogic/Shoplogic" method="_on_grandpabuy_down"]

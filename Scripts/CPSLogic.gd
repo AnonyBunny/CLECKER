@@ -14,7 +14,7 @@ func addcps(value):
 	secondspercookie = (1.0/cookiespersecond)
 	$"Timer".wait_time = secondspercookie
 	$"Timer".start()
+	$"../Label2".text = "cps: " + str(cookiespersecond)
 
 func _on_Timer_timeout():
 	$"../".points += 1
-	pass # Replace with function body.
